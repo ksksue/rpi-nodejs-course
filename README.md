@@ -20,5 +20,5 @@ sudo apt-get install -y npm
 
 ```
 sudo apt-get install git
-git clone git@github.com:ksksue/rpi-nodejs-course.git
+git clone https://github.com/ksksue/rpi-nodejs-course.git
 ```
