@@ -25,12 +25,9 @@ mqttブローカーのインストール
 sudo apt install mosquitto
 ```
 
-mqttでwebsocketを有効にする方法。webからmqttを使用する場合に必要な設定。
+次に、mqttでwebsocketを有効にする。webからmqttを使用する場合に必要な設定。
 
-```
-sudo vi /etc/mosquitto/mosquitto.conf
-```
-以下の3行を追記する
+root権限で /etc/mosquitto/mosquitto.conf ファイルを開き、以下の3行を追記する
 
 ```
 listener 1883
