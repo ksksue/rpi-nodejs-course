@@ -1,9 +1,10 @@
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://localhost');
 
-//var message = '1';
-var message = '0';
-var topic = 'kagawa/kosen/KeisukeSuzuki'
+var message = 'on';
+//var message = 'off';
+
+var topic = 'kagawa/kosen/ksk/led'
 
 client.on('connect', function(){
   console.log('publisher.connected.');
