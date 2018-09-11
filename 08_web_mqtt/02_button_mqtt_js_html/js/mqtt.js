@@ -1,8 +1,6 @@
 // Create a client instance
-//client = new Paho.MQTT.Client("raspberrypi.local", Number(8080), "clientId" + new Date().getTime());
+//client = new Paho.MQTT.Client("192.168.1.11", Number(9090), "clientId" + new Date().getTime());
 client = new Paho.MQTT.Client("localhost", Number(9090), "clientId" + new Date().getTime());
-
-console.log(client);
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -27,10 +25,16 @@ function onConnectionLost(responseObject) {
 }
 
 var count = 0;
-document.getElementById("btn").onclick = function() {
-  console.log('btn onclick');
+
+document.getElementById("btn_led_on").onclick = function() {
   count++;
-  document.getElementById("res").innerHTML = "count : " + count;
-  client.send("/kagawa/kosen/ksk/led", "on");
+  document.getElementById("text1").innerHTML = "count : " + count;
+  client.send("/kagawa/kosen/ksk/hw/led", "on");
+};
+
+document.getElementById("btn_led_off").onclick = function() {
+  count++;
+  document.getElementById("text1").innerHTML = "count : " + count;
+  client.send("/kagawa/kosen/ksk/hw/led", "off");
 };
 

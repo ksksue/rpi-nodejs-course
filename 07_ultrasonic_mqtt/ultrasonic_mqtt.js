@@ -6,9 +6,9 @@ var parser = new SerialPort.parsers.Readline();
 port.pipe(parser);
 
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://localhost');
+var client = mqtt.connect('mqtt://kosenpi.local');
 
-var topic = '/kagawa/kosen/ksk/led'
+var LED_TOPIC = '/kagawa/kosen/ksk/hw/led';
 
 client.on('connect', function(){
   console.log('publisher.connected.');
@@ -22,9 +22,9 @@ parser.on('data', function(data) {
 
   var num = Number(data);
   if(num < THRESHOLD_LO) {
-    client.publish(topic, 'on');
+    client.publish(LED_TOPIC, 'on');
   } else if(num > THRESHOLD_HI) {
-    client.publish(topic, 'off');
+    client.publish(LED_TOPIC, 'off');
   }
 });
 

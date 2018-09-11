@@ -1,7 +1,7 @@
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://localhost');
+var client = mqtt.connect('mqtt://kosenpi.local');
 
-const TOPIC = '/kagawa/kosen/KeisukeSuzuki';
+const TOPIC = '/kagawa/kosen/ksk';
 
 client.on('connect', function(){
   console.log('subscriber.connected.');

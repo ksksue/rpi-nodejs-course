@@ -8,9 +8,9 @@ port.pipe(parser);
 
 parser.on('data', function(data) {
   console.log('Data:', data.toString());
-  if(data == 0) {
+  if(data == '0') {
     led.off();
-  } else if(data == 1) {
+  } else if(data == '1') {
     led.on();
   }
 });

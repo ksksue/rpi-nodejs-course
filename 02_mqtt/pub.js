@@ -1,8 +1,8 @@
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://localhost');
+var client = mqtt.connect('mqtt://kosenpi.local');
 
 var message = 'Hello MQTT!';
-var topic = '/kagawa/kosen/KeisukeSuzuki'
+var topic = '/kagawa/kosen/ksk'
 
 client.on('connect', function(){
   console.log('publisher.connected.');
