@@ -1,6 +1,5 @@
 // Create a client instance
-//client = new Paho.MQTT.Client("192.168.1.11", Number(9090), "clientId" + new Date().getTime());
-client = new Paho.MQTT.Client("localhost", Number(9090), "clientId" + new Date().getTime());
+client = new Paho.MQTT.Client("kosenpi.local", Number(9001), "clientId" + new Date().getTime());
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;

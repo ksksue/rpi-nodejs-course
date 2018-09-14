@@ -32,7 +32,7 @@ root権限で /etc/mosquitto/mosquitto.conf ファイルを開き、以下の3�
 ```
 listener 1883
 
-listener 9090 127.0.0.1
+listener 9001
 protocol websockets
 ```
 
