@@ -7,16 +7,15 @@ port.pipe(parser);
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://kosenpi.local');
+var yourTopic = require('../setting.json').yourTopic;
 
-var topic = '/kagawa/kosen/ksk/web'
+var topic = yourTopic + '/web';
 
 client.on('connect', function(){
   console.log('publisher.connected.');
 });
 
-const THRESHOLD_HI = 100;
-const THRESHOLD_LO = 30;
-
+// Arduinoからのシリアルデータ
 parser.on('data', function(data) {
   console.log('Data:', data.toString());
 

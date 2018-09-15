@@ -6,8 +6,9 @@ port.pipe(parser);
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://kosenpi.local');
+var myTopic = require('../setting.json').myTopic;
 
-var topic = '/kagawa/kosen/ksk/slack/'
+var topic = myTopic + '/slack'
 
 client.on('connect', function(){
   console.log('publisher.connected.');
@@ -29,15 +30,15 @@ parser.on('data', function(data) {
     case STATE_HI : 
       if(num < THRESHOLD_LO) {
         state = STATE_LO;
-        console.log('人が居ます');
-        client.publish(topic, '人が居ます');
+        console.log('近づきました');
+        client.publish(topic, '近づきました');
       }
     break;
     case STATE_LO : 
       if(num > THRESHOLD_HI) {
         state = STATE_HI;
-        console.log('人が居なくなりました');
-        client.publish(topic, '人が居なくなりました');
+        console.log('遠ざかりました');
+        client.publish(topic, '遠ざかりました');
       }
     break;
     default :

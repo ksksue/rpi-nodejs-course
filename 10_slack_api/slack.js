@@ -6,9 +6,10 @@ const web = new WebClient(token);
 
 // This argument can be a channel ID, a DM ID, a MPDM ID, or a group ID
 const channelId = 'general';
+var myName = require('../setting.json').myName;
 
 // See: https://api.slack.com/methods/chat.postMessage
-web.chat.postMessage({ channel: channelId, text: 'Hello there' },
+web.chat.postMessage({ channel: channelId, text: myName + ' : Hello there' })
   .then((res) => {
     // `res` contains information about the posted message
     console.log('Message sent: ', res.ts);

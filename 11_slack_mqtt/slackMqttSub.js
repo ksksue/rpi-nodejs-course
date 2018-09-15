@@ -16,9 +16,11 @@ const channelId = 'general';
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://kosenpi.local');
+var myTopic = require('../setting.json').myTopic;
+var myName = require('../setting.json').myName;
 
-const MY_TOPIC_HEAD = '/kagawa/kosen/ksk/slack/';
-const MY_TOPIC = '/kagawa/kosen/ksk/slack/'+'+';
+const MY_TOPIC_HEAD = myTopic + '/slack';
+const MY_TOPIC = MY_TOPIC_HEAD;
 
 client.on('connect', function(){
   console.log('subscriber.connected.');
@@ -32,7 +34,7 @@ client.on('message', function(topic, message){
   console.log('subscriber.on.message', 'topic:', topic, 'message:', message.toString());
 
   // See: https://api.slack.com/methods/chat.postMessage
-  web.chat.postMessage({ channel: channelId, text: message.toString() })
+  web.chat.postMessage({ channel: channelId, text: myName + ' : ' + message.toString() })
     .then((res) => {
       // `res` contains information about the posted message
       console.log('Message sent: ', res.ts);
