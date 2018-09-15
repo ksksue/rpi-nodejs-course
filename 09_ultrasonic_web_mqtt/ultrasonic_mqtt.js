@@ -6,7 +6,7 @@ var parser = new SerialPort.parsers.Readline();
 port.pipe(parser);
 
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://localhost');
+var client = mqtt.connect('mqtt://kosenpi.local');
 
 var topic = '/kagawa/kosen/ksk/web'
 

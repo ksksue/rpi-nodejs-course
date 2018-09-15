@@ -1,3 +1,6 @@
+var myTopic = "/kagawa/kosen/pi";
+var yourTopic = "/kagawa/kosen/pi";
+
 // Create a client instance
 client = new Paho.MQTT.Client("kosenpi.local", Number(9001), "clientId" + new Date().getTime());
 
@@ -10,7 +13,7 @@ client.connect({onSuccess:onConnect});
 
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
-  client.subscribe("/kagawa/kosen/ksk/web");
+  client.subscribe(myTopic + "/web");
 }
 
 function onMessageArrived(message) {
@@ -28,12 +31,12 @@ var count = 0;
 document.getElementById("btn_led_on").onclick = function() {
   count++;
   document.getElementById("text1").innerHTML = "count : " + count;
-  client.send("/kagawa/kosen/ksk/hw/led", "on");
+  client.send(yourTopic + "/hw/led", "on");
 };
 
 document.getElementById("btn_led_off").onclick = function() {
   count++;
   document.getElementById("text1").innerHTML = "count : " + count;
-  client.send("/kagawa/kosen/ksk/hw/led", "off");
+  client.send(yourTopic + "/hw/led", "off");
 };
 

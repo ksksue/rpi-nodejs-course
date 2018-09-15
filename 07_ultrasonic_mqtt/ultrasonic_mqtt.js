@@ -7,8 +7,9 @@ port.pipe(parser);
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://kosenpi.local');
+var yourTopic = require('../setting.json').yourTopic;
 
-var LED_TOPIC = '/kagawa/kosen/ksk/hw/led';
+var LED_TOPIC = yourTopic + '/hw/led';
 
 client.on('connect', function(){
   console.log('publisher.connected.');
