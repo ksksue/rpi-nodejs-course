@@ -1,12 +1,11 @@
 const { WebClient } = require('@slack/client');
+const slackToken = require('../setting.json').slackToken;
+const myName = require('../setting.json').myName;
 
-const token = process.env.SLACK_TOKEN;
-
-const web = new WebClient(token);
+const web = new WebClient(slackToken);
 
 // This argument can be a channel ID, a DM ID, a MPDM ID, or a group ID
 const channelId = 'general';
-var myName = require('../setting.json').myName;
 
 // See: https://api.slack.com/methods/chat.postMessage
 web.chat.postMessage({ channel: channelId, text: myName + ' : Hello there' })

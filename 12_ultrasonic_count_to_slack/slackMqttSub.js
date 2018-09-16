@@ -2,10 +2,9 @@
 // slack
 /////////////////////////////////////////////////////
 const { WebClient } = require('@slack/client');
+const slackToken = require('../setting.json').slackToken;
 
-const token = process.env.SLACK_TOKEN;
-
-const web = new WebClient(token);
+const web = new WebClient(slackToken);
 
 // This argument can be a channel ID, a DM ID, a MPDM ID, or a group ID
 const channelId = 'general';

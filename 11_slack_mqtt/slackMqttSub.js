@@ -2,10 +2,9 @@
 // slack
 /////////////////////////////////////////////////////
 const { WebClient } = require('@slack/client');
+const slackToken = require('../setting.json').slackToken;
 
-const token = process.env.SLACK_TOKEN;
-
-const web = new WebClient(token);
+const web = new WebClient(slackToken);
 
 // This argument can be a channel ID, a DM ID, a MPDM ID, or a group ID
 const channelId = 'general';
@@ -16,8 +15,8 @@ const channelId = 'general';
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://kosenpi.local');
-var myTopic = require('../setting.json').myTopic;
-var myName = require('../setting.json').myName;
+const myTopic = require('../setting.json').myTopic;
+const myName = require('../setting.json').myName;
 
 const MY_TOPIC_HEAD = myTopic + '/slack';
 const MY_TOPIC = MY_TOPIC_HEAD;
