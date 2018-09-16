@@ -4,7 +4,10 @@
 本講義では、現場で役立つ社内ツールやHW治具などを効率よく構築するための知識を身につけます。
 本講義を進めることでRPiやNode.js, Arduinoなどを使い少ないコード量でHW/SW/API連携したツールを作ることができます。
 
-本講義の実施時間はハンズオン形式で2時間30分です。
+本講義の実施時間はハンズオン形式で3時間です。
+
+本講義のスライド
+https://docs.google.com/presentation/d/1PP32Yz3fejxk0NyXDop6SpTCkYKwcJA5MPENC-SIads/edit?usp=sharing
 
 本リポジトリの内容は以下の環境を用意することで再現することができます。
 
