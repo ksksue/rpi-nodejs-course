@@ -10,19 +10,31 @@ function rpiRelayBoard() {
     return new rpiRelayBoard();
   }
 
-  gpio.setup(CH1_PIN, gpio.DIR_OUT);
-  gpio.setup(CH2_PIN, gpio.DIR_OUT);
-  gpio.setup(CH3_PIN, gpio.DIR_OUT);
-  gpio.setup(CH4_PIN, gpio.DIR_OUT, initPin);
- 
+  this.inited = false;
+
 }
 
-function initPin(err) {
-  if (err) throw err;
-  gpio.write(CH1_PIN, true);
-  gpio.write(CH2_PIN, true);
-  gpio.write(CH3_PIN, true);
-  gpio.write(CH4_PIN, true);
+rpiRelayBoard.prototype.init = function(callback) {
+  if(this.inited) { setImmediate(callback); return; }
+  this.inited = true;
+  gpio.setup(CH1_PIN, gpio.DIR_OUT, () => {
+  gpio.write(CH1_PIN, true, () => {
+    gpio.setup(CH2_PIN, gpio.DIR_OUT, () => {
+    gpio.write(CH2_PIN, true, () => {
+      gpio.setup(CH3_PIN, gpio.DIR_OUT, () => {
+      gpio.write(CH3_PIN, true, () => {
+        gpio.setup(CH4_PIN, gpio.DIR_OUT, () => {
+        gpio.write(CH4_PIN, true, () => {
+          callback();
+        });
+        });
+      });
+      });
+    });
+    });
+  });
+  });
+ 
 }
 
 rpiRelayBoard.prototype.on = function(ch, callback) {
